@@ -147,6 +147,5 @@ Pull requests are welcome. For major changes, please open an issue first.
 Made with ❤️ by **Muhammad Khalil**
 Connect on [LinkedIn](https://www.linkedin.com/in/khalil-dev) or [GitHub](https://github.com/khalil-dev)
 
-```
 
 
