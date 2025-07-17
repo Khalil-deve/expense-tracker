@@ -65,7 +65,7 @@ export default function Login() {
     } catch (err) {
       toast.error(err.message);
     } finally {
-      setLoading(false); // ✅ hide loader
+      setLoading(false); // hide loader
     }
   };
 

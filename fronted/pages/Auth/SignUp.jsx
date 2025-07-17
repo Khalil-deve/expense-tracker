@@ -35,20 +35,24 @@ export default function SignUp() {
       return;
     }
 
+    if(!userName){
+      setError('Please enter your name');
+      return;
+    }
     setError("");
     setLoading(true); // Start loader
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/auth/login`,
+        `${import.meta.env.VITE_API_URL}/auth/signup`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
+          body: JSON.stringify({ userName, email, password }),
         }
       );
 
       const data = await response.json();
-      if (!response.ok) throw new Error(data.message || "Login failed");
+      if (!response.ok) throw new Error(data.message || "SignUp failed");
 
       if (data.token) {
         localStorage.setItem("token", data.token);
@@ -59,7 +63,7 @@ export default function SignUp() {
           "tokenExpiry",
           (Date.now() + 60 * 60 * 1000).toString()
         );
-        toast.success("Login successful");
+        toast.success("SignUp successful");
         navigate("/");
       }
     } catch (err) {
@@ -87,22 +91,27 @@ export default function SignUp() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Input
+            type="text"
             value={userName}
             label="Username"
             onChange={({ target }) => setUserName(target.value)}
+            placeholder="enter your name"
           />
           <Input
+            type="email"
             value={email}
             label="Email Address"
             onChange={({ target }) => setEmail(target.value)}
+            placeholder="you@example.com"
           />
         </div>
 
         <Input
+         type="password"
           value={password}
           label="Password"
           onChange={({ target }) => setPassword(target.value)}
-          type="password"
+          placeholder="••••••••"
         />
         {password && (
           <div className="text-sm mt-2 font-medium text-gray-600">
