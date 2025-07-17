@@ -42,7 +42,6 @@ export default function PopUpModel({ onClose, ModelName, apiRoute, onSave }) {
       toast.error("User not authenticated.");
       return;
     }
-    console.log('the api route is: ', apiRoute);
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}${apiRoute}`, {
         method: "POST",
