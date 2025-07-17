@@ -7,7 +7,6 @@ const StatsOverview = lazy(() => import("../../src/components/StatsOverview"));
 const RecentTransactions = lazy(() => import("../../src/components/RecentTransactions"));
 const PieChartBox = lazy(() => import("../../src/components/PieChartBox"));
 const ExpensePreview = lazy(() => import("../../src/components/ExpensePreview"));
-const LineChartBox = lazy(() => import("../../src/components/LineChartBox")); // (optional)
 const RecentIncomes = lazy(() => import("../../src/components/RecentIncomes"));
 const BarChartBox = lazy(() => import("../../src/components/BarChartBox"));
 
@@ -62,8 +61,6 @@ export default function Home() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Suspense fallback={<Loader />}>
-          {/* You can enable LineChartBox if needed */}
-          {/* <LineChartBox /> */}
           <PieChartBox pieData={simplifiedIncomes} />
         </Suspense>
         <Suspense fallback={<Loader />}>
