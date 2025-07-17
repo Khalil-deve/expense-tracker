@@ -5,6 +5,7 @@ import toast, { Toaster } from "react-hot-toast";
 import PopUp from "../../src/components/inputs/PopUp";
 import { Lock } from "lucide-react";
 import getPasswordStrength from "../../utils/Logout";
+import Loader from "../../src/components/Loader";
 
 export default function Login() {
   const [email, setEmail] = useState("");
