@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Input from "../../src/components/inputs/input";
+import Input from "../../src/components/inputs/Input";
 import toast, { Toaster } from "react-hot-toast";
 import PopUp from "../../src/components/inputs/PopUp";
 import { Lock } from "lucide-react";

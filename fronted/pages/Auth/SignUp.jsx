@@ -1,6 +1,6 @@
 // SignUpForm.jsx
 import { useState } from "react";
-import Input from "../../src/components/inputs/input";
+import Input from "../../src/components/inputs/Input";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import ProfilePhotoSelect from "../../src/components/inputs/ProfilePhotoSelect";
