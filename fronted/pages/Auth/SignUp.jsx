@@ -35,24 +35,31 @@ export default function SignUp() {
       return;
     }
 
-    if(!userName){
-      setError('Please enter your name');
+    if (!userName) {
+      setError("Please enter your name");
       return;
     }
-    if(!profilePic){
-      setError("please select your profile image");
+
+    if (!profilePic) {
+      setError("Please select your profile image");
       return;
     }
 
     setError("");
-    setLoading(true); // Start loader
+    setLoading(true);
+
     try {
+      const formData = new FormData();
+      formData.append("userName", userName);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("profilePic", profilePic); // Must be a File object
+
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/auth/signup`,
         {
           method: "POST",
-          headers: {  "Content-Type": "multipart/form-data" },
-          body: JSON.stringify({ userName, email, password,profilePic}),
+          body: formData,
         }
       );
 
@@ -70,15 +77,13 @@ export default function SignUp() {
         );
         toast.success("SignUp successful");
         navigate("/");
-      }else {
-        toast.error(response.data.message || "Signup failed");
+      } else {
+        toast.error(data.message || "Signup failed");
       }
     } catch (err) {
-       toast.error(
-        err.response?.data?.message || "Signup failed. Please try again."
-      );
+      toast.error(err.message || "Signup failed. Please try again.");
     } finally {
-      setLoading(false); // Stop loader
+      setLoading(false);
     }
   };
 
@@ -116,7 +121,7 @@ export default function SignUp() {
         </div>
 
         <Input
-         type="password"
+          type="password"
           value={password}
           label="Password"
           onChange={({ target }) => setPassword(target.value)}
