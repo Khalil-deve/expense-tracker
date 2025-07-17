@@ -39,6 +39,11 @@ export default function SignUp() {
       setError('Please enter your name');
       return;
     }
+    if(!profilePic){
+      setError("please select your profile image");
+      return;
+    }
+
     setError("");
     setLoading(true); // Start loader
     try {
@@ -46,8 +51,8 @@ export default function SignUp() {
         `${import.meta.env.VITE_API_URL}/auth/signup`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userName, email, password }),
+          headers: {  "Content-Type": "multipart/form-data" },
+          body: JSON.stringify({ userName, email, password,profilePic}),
         }
       );
 
@@ -65,9 +70,13 @@ export default function SignUp() {
         );
         toast.success("SignUp successful");
         navigate("/");
+      }else {
+        toast.error(response.data.message || "Signup failed");
       }
     } catch (err) {
-      toast.error(err.message);
+       toast.error(
+        err.response?.data?.message || "Signup failed. Please try again."
+      );
     } finally {
       setLoading(false); // Stop loader
     }
