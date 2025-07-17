@@ -7,15 +7,11 @@ export default function Root() {
   const expiry = localStorage.getItem('tokenExpiry');
    const isExpired = expiry && Date.now() > parseInt(expiry);
   // Check if the user is authenticated
-  console.log('the value of the isAuthenticated:', isAuthenticated);
-
   if (!isAuthenticated || isExpired) {
-    console.log('Hello world')
     return <Navigate to="/login" replace/>;
   }
   const profileImage = localStorage.getItem("profileImage");
   const Username = localStorage.getItem("Username");
-  console.log('the value of the profileImage:', profileImage);
   return (
     <div className="min-h-screen flex bg-gray-100">
       {/* Sidebar (always shown) */}

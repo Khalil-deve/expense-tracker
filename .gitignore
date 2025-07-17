@@ -20,9 +20,7 @@ pids
 **/.turbo/
 
 # Environment files
-.env
 .env.*.local
-.env.local
 
 # OS generated
 .DS_Store
@@ -48,3 +46,4 @@ backend/uploads/
 **/.next/
 **/.nuxt/
 **/.vercel/
+config.bat
