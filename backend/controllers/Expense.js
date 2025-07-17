@@ -1,6 +1,7 @@
 const Income = require('../models/Incomes.js');
 
 exports.getAllExpense = async (req, res) => {
+    console.log('hello world');
     try {
         const expenses = await Income.find({type: 'expense'});
         // Send all expenses
