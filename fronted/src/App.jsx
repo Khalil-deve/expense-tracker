@@ -3,6 +3,7 @@ import { lazy, Suspense } from 'react';
 import './App.css';
 import Loader from './components/Loader';
 import AuthPage from './components/layouts/AuthPage';
+import NotFound from '../pages/NotFound';
 
 // Lazy load pages
 const Login = lazy(() => import('../pages/Auth/Login'));
@@ -31,7 +32,7 @@ function App() {
           <Route path='/login' element={<AuthPage />} />
           <Route path='/signup' element={<AuthPage />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
-
+           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </Router>

@@ -6,7 +6,7 @@ export default function useTransaction(type, shouldReload = false) {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`/dash/${type}/`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/dash/${type}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`, // optional if used

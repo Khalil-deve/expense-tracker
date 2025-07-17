@@ -63,11 +63,11 @@ export default function Login() {
         toast.success("Login successful");
         navigate("/");
       }else {
-        toast.error(response.data.message || "Signup failed");
+        toast.error(response.data.message || "Login failed");
       }
     } catch (err) {
       toast.error(
-        err.response?.data?.message || "Signup failed. Please try again."
+        err.response?.data?.message || "Login failed. Please try again."
       );
     } finally {
       setLoading(false); // hide loader
